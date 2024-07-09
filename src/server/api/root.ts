@@ -1,5 +1,5 @@
-import { calculatorRouter } from "~/server/api/routers/post";
-import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { calculatorRouter } from "../api/routers/calculator";
+import { createCallerFactory, createTRPCRouter } from "../api/trpc";
 
 /**
  * This is the primary router for your server.
