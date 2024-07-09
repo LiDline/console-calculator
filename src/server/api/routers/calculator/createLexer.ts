@@ -1,9 +1,9 @@
-import type { LexerType, Operators } from "~/server/validator/interfaces";
+import type { TokensType, Operators } from "~/server/validator/interfaces";
 import { ERRORS } from "./CONST";
 import checkTokensOnDoubleBracket from "./func/createLexer/checkTokensOnDoubleBracket";
 import generateRegex from "./func/createLexer/generateRegex";
 
-export default function createLexer(input: string) {
+export default function createLexer(input: string): TokensType {
   const regex = generateRegex();
 
   const clearTokens = input.match(regex);
@@ -22,12 +22,12 @@ export default function createLexer(input: string) {
     };
   }
 
-  const tokens: LexerType[] = filteredTokens.map((t) => {
+  const tokens = filteredTokens.map((t) => {
     return {
       type: (!isNaN(Number(t)) ? "number" : t) as Operators | "number",
       value: t as Operators | number,
     };
   });
 
-  return tokens;
+  return { tokens };
 }

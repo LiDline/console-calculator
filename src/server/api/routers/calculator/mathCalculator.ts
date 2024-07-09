@@ -1,8 +1,11 @@
 import createLexer from "./createLexer";
 
 export default function mathCalculator(input: string) {
-  const lexer = createLexer(input);
-  console.log(lexer);
+  const tokens = createLexer(input);
 
-  return lexer;
+  if (tokens.error) {
+    return tokens;
+  }
+
+  return;
 }
