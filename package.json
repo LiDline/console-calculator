@@ -1,0 +1,22 @@
+{
+  "name": "console-calculator",
+  "version": "1.0.0",
+  "description": "Test task for Byndyusoft. JavaScript-разработчик / backend на Node.js (IT компания)",
+  "main": "app.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js",
+    "dev:tsc": "tsc --watch --preserveWatchOutput",
+    "dev:node": "nodemon --watch dist --enable-source-maps dist/app.js",
+    "dev": "concurrently \"npm run dev:tsc\" \"npm run dev:node\""
+  },
+  "keywords": [],
+  "author": "LiDline",
+  "license": "MIT License",
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "concurrently": "^6.5.1",
+    "nodemon": "^3.1.4",
+    "typescript": "^5.5.3"
+  }
+}
