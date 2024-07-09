@@ -1,5 +1,8 @@
-export default function mathCalculator(input: string) {
-  console.log(input);
+import createLexer from "./createLexer";
 
-  return;
+export default function mathCalculator(input: string) {
+  const lexer = createLexer(input);
+  console.log(lexer);
+
+  return lexer;
 }

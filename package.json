@@ -1,6 +1,11 @@
 {
   "name": "console-calculator",
   "version": "0.1.0",
+  "keywords": [
+    "lexer",
+    "parser"
+  ],
+  "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {

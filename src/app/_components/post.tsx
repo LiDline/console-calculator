@@ -12,7 +12,7 @@ export function LatestPost() {
   const calculate = api.calculator.calculate.useMutation({
     onSuccess: async () => {
       await utils.calculator.invalidate();
-      setMathString("");
+      // setMathString("");
     },
   });
 
