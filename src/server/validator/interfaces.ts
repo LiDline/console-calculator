@@ -10,7 +10,15 @@ export type CalculateResponse = z.infer<typeof CalculateResponseSchema>;
 
 export type Operators = "+" | "-" | "*" | "/" | "(" | ")";
 
+export type Categories = "AddOperator" | "NumberLiteral";
+
 export interface TokensType {
-  tokens?: { type: Operators | "number"; value: Operators | number }[];
+  type: Operators | "number";
+  value: Operators | number;
+  categories: Categories;
+}
+
+export interface TokensTypeWithError {
+  tokens?: TokensType[];
   error?: string;
 }

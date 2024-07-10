@@ -1,9 +1,13 @@
-import type { TokensType, Operators } from "~/server/validator/interfaces";
+import type {
+  TokensTypeWithError,
+  Operators,
+  TokensType,
+} from "~/server/validator/interfaces";
 import { ERRORS } from "./CONST";
 import checkTokensOnDoubleBracket from "./func/createLexer/checkTokensOnDoubleBracket";
 import generateRegex from "./func/createLexer/generateRegex";
 
-export default function createLexer(input: string): TokensType {
+export default function createLexer(input: string): TokensTypeWithError {
   const regex = generateRegex();
 
   const clearTokens = input.match(regex);
@@ -22,12 +26,13 @@ export default function createLexer(input: string): TokensType {
     };
   }
 
-  const tokens = filteredTokens.map((t) => {
+  const tokens: TokensType[] = filteredTokens.map((t) => {
     return {
+      categories: !isNaN(Number(t)) ? "NumberLiteral" : "AddOperator",
       type: (!isNaN(Number(t)) ? "number" : t) as Operators | "number",
       value: t as Operators | number,
     };
   });
 
-  return { tokens };
+  return { tokens } as TokensTypeWithError;
 }

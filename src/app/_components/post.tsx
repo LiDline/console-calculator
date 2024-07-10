@@ -14,6 +14,7 @@ export function LatestPost() {
       await utils.calculator.invalidate();
       // setMathString("");
     },
+    onError: (error) => console.log(error),
   });
 
   return (
