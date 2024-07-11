@@ -1,4 +1,4 @@
-import { ALLOWED_OPERATORS } from "../../CONST";
+import { ALLOWED_OPERATORS } from "../../routers/calculator/CONST";
 
 export default function generateRegex(): RegExp {
   const operators = ALLOWED_OPERATORS;
