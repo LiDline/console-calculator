@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ERRORS_LIST } from "../api/routers/calculator/CONST";
+import { ERRORS_LIST } from "../api/CONST";
 
 export const CalculateRequestSchema = z.string().min(1);
 

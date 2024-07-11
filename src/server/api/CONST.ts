@@ -1,4 +1,4 @@
-import type { Operators } from "../../../../server/validator/interfaces";
+import type { Operators } from "../validator/interfaces";
 
 export const ALLOWED_OPERATORS: Operators[] = ["+", "-", "*", "/", "(", ")"];
 

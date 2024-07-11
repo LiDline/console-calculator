@@ -7,3 +7,5 @@ import type {
 export type CalculateRequest = z.infer<typeof CalculateRequestSchema>;
 
 export type CalculateResponse = z.infer<typeof CalculateResponseSchema>;
+
+export type Operators = "+" | "-" | "*" | "/" | "(" | ")";

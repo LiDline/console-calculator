@@ -1,5 +1,5 @@
 import type { CalculateResponse } from "~/server/validator/interfaces";
-import { ERRORS } from "../routers/calculator/CONST";
+import { ERRORS } from "../CONST";
 import checkTokensOnDoubleBracket from "./filteredTokens/checkTokensOnDoubleBracket";
 import generateRegex from "./filteredTokens/generateRegex";
 

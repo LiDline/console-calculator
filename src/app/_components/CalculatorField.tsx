@@ -1,28 +1,46 @@
-"use client";
-
 import { useState } from "react";
 
 import { api } from "~/trpc/react";
 
-export function LatestPost() {
+interface CalculatorFieldProps {
+  chevrotain: boolean;
+}
+
+export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
   const utils = api.useUtils();
 
   const [mathString, setMathString] = useState("");
+  const [result, setResult] = useState<string>("");
+
+  const handleError = (error: string) => setResult(`Ошибка. ${error}`);
 
   const calculate = api.calculator.calculate.useMutation({
     onSuccess: async () => {
       await utils.calculator.invalidate();
-      // setMathString("");
     },
-    onError: (error) => console.log(error),
+    onError: (error) => handleError(error.message),
   });
+
+  const calculateWithChevrotain =
+    api.calculator.mathCalculatorWithChevrotain.useMutation({
+      onSuccess: async () => {
+        // await utils.mathCalculatorWithChevrotain.invalidate();
+      },
+      onError: (error) => handleError(error.message),
+    });
 
   return (
     <div className="w-full max-w-xs">
+      <>{result}</>
+
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          calculate.mutate(mathString);
+          const res = chevrotain
+            ? calculateWithChevrotain.mutate(mathString)
+            : calculate.mutate(mathString);
+
+          setResult(res);
         }}
         className="flex flex-col gap-2"
       >
