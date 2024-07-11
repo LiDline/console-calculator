@@ -1,6 +1,6 @@
 import { Lexer } from "chevrotain";
 import createTokens from "./func/createTokens";
-import { Parser } from "./func/Parser";
+import { CustomParser } from "./func/Parser";
 
 export default function mathCalculatorWithChevrotain(input: string) {
   const { tokensByPriority, tokens } = createTokens();
@@ -9,7 +9,13 @@ export default function mathCalculatorWithChevrotain(input: string) {
     ensureOptimizations: true,
   });
 
-  const parser = new Parser(tokens);
+  const lexingResult = CalculatorLexer.tokenize(input);
+
+  const parser = new CustomParser(tokens);
+  parser.reset();
+  parser.input = lexingResult.tokens;
+
+  const cst = parser.expression();
 
   const BaseCstVisitor = parser.getBaseCstVisitorConstructor();
 

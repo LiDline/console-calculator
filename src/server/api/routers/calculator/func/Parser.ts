@@ -2,7 +2,7 @@ import { CstParser } from "chevrotain";
 import type { CstNode, ParserMethod } from "chevrotain";
 import type { TokenTypeDict } from "~/server/validator/interfaces";
 
-export class Parser extends CstParser {
+export class CustomParser extends CstParser {
   private allTokens: TokenTypeDict;
   expression: ParserMethod<[], CstNode>;
   additionExpression: ParserMethod<[], CstNode>;
@@ -55,33 +55,4 @@ export class Parser extends CstParser {
 
     this.performSelfAnalysis();
   }
-
-  //   additionExpression = this.RULE("additionExpression", () => {
-  //     this.SUBRULE(this.multiplicationExpression, { LABEL: "lhs" });
-  //     this.MANY(() => {
-  //       this.CONSUME(this.allTokens.AdditionOperator);
-  //       this.SUBRULE1(this.multiplicationExpression, { LABEL: "rhs" });
-  //     });
-  //   });
-
-  //   multiplicationExpression = this.RULE("multiplicationExpression", () => {
-  //     this.SUBRULE(this.atomicExpression, { LABEL: "lhs" });
-  //     this.MANY(() => {
-  //       this.CONSUME(this.allTokens.MultiplicationOperator);
-  //       this.SUBRULE1(this.atomicExpression, { LABEL: "rhs" });
-  //     });
-  //   });
-
-  //   atomicExpression = this.RULE("atomicExpression", () => {
-  //     this.OR([
-  //       { ALT: () => this.SUBRULE(this.parenthesisExpression) },
-  //       { ALT: () => this.CONSUME(this.allTokens.NumberLiteral) },
-  //     ]);
-  //   });
-
-  //   parenthesisExpression = this.RULE("parenthesisExpression", () => {
-  //     this.CONSUME(this.allTokens["("]);
-  //     this.SUBRULE(this.expression);
-  //     this.CONSUME(this.allTokens[")"]);
-  //   });
 }
