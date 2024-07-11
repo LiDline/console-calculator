@@ -1,6 +1,25 @@
 import type { Operators } from "../validator/interfaces";
 
-export const ALLOWED_OPERATORS: Operators[] = ["+", "-", "*", "/", "(", ")"];
+export enum TokenName {
+  AdditionOperator = "AdditionOperator",
+  Plus = "+",
+  Minus = "-",
+  MultiplicationOperator = "MultiplicationOperator",
+  Mul = "*",
+  Div = "/",
+  LParen = "(",
+  RParen = ")",
+  NumberLiteral = "NumberLiteral",
+}
+
+export const ALLOWED_OPERATORS: Operators[] = [
+  TokenName.Plus,
+  TokenName.Minus,
+  TokenName.Mul,
+  TokenName.Div,
+  TokenName.LParen,
+  TokenName.RParen,
+];
 
 export const ERRORS_LIST = [
   "Ошибка. В ведённой строке не обнаружены операторы или числа.",
