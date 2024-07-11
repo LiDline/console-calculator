@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { CalculatorField } from "~/app/_components/CalculatorField";
+import { CalculatorField } from "./_components/CalculatorField";
 
 export default function Home() {
   const [isChecked, setIsChecked] = React.useState(true);

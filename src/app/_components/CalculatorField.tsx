@@ -12,13 +12,13 @@ export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
   const [mathString, setMathString] = useState("");
   const [result, setResult] = useState<string>("");
 
-  const handleError = (error: string) => setResult(`Ошибка. ${error}`);
+  const handleResult = (res: string) => setResult(res);
 
   const calculate = api.calculator.calculate.useMutation({
     onSuccess: async () => {
       await utils.calculator.invalidate();
     },
-    onError: (error) => handleError(error.message),
+    onError: (error) => handleResult(error.message),
   });
 
   const calculateWithChevrotain =
@@ -26,7 +26,7 @@ export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
       onSuccess: async () => {
         // await utils.mathCalculatorWithChevrotain.invalidate();
       },
-      onError: (error) => handleError(error.message),
+      onError: (error) => handleResult(error.message),
     });
 
   return (
@@ -40,7 +40,7 @@ export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
             ? calculateWithChevrotain.mutate(mathString)
             : calculate.mutate(mathString);
 
-          setResult(res);
+          handleResult(`Результат: ${res}`);
         }}
         className="flex flex-col gap-2"
       >
