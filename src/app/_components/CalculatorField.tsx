@@ -15,18 +15,20 @@ export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
   const handleResult = (res: string) => setResult(res);
 
   const calculate = api.calculator.calculate.useMutation({
-    onSuccess: async () => {
+    onSuccess: async (res) => {
       await utils.calculator.invalidate();
+      handleResult(`Результат: ${res.result}`);
     },
     onError: (error) => handleResult(error.message),
   });
 
   const calculateWithChevrotain =
     api.calculator.mathCalculatorWithChevrotain.useMutation({
-      onSuccess: async () => {
-        // await utils.mathCalculatorWithChevrotain.invalidate();
+      onSuccess: (res) => handleResult(`Результат: ${res.result}`),
+
+      onError: (error) => {
+        handleResult(error.message);
       },
-      onError: (error) => handleResult(error.message),
     });
 
   return (
@@ -36,11 +38,9 @@ export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          const res = chevrotain
+          chevrotain
             ? calculateWithChevrotain.mutate(mathString)
             : calculate.mutate(mathString);
-
-          handleResult(`Результат: ${res}`);
         }}
         className="flex flex-col gap-2"
       >

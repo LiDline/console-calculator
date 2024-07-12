@@ -10,7 +10,7 @@ import mathCalculatorWithChevrotain from "./calculator/mathCalculatorWithChevrot
 export const calculatorRouter = createTRPCRouter({
   calculate: customProcedure
     .input(CalculateRequestSchema)
-    // .output(CalculateResponseSchema)
+    .output(CalculateResponseSchema)
     .mutation(({ input }) => {
       const res = mathCalculator(input);
 
@@ -19,7 +19,7 @@ export const calculatorRouter = createTRPCRouter({
 
   mathCalculatorWithChevrotain: customProcedure
     .input(CalculateRequestSchema)
-    // .output(CalculateResponseSchema)
+    .output(CalculateResponseSchema)
     .mutation(({ input }) => {
       const res = mathCalculatorWithChevrotain(input);
 

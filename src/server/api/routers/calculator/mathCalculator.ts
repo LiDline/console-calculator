@@ -1,4 +1,6 @@
-export default function mathCalculator(input: string) {
+import type { CalculateResponse } from "~/server/validator/interfaces";
+
+export default function mathCalculator(input: string): CalculateResponse {
   type SymbolType =
     | "additionExpr"
     | "multiplicationExpr"
@@ -76,5 +78,5 @@ export default function mathCalculator(input: string) {
 
   // console.log(JSON.stringify(res));
 
-  return;
+  return { result: "1" };
 }

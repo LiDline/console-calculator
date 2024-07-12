@@ -23,7 +23,7 @@ export const ALLOWED_OPERATORS: Operators[] = [
 
 export const ERRORS_LIST = [
   "Ошибка. В ведённой строке не обнаружены операторы или числа.",
-  "В ведённой строке есть не закрытые скобки.",
+  "В ведённой строке есть незакрытые скобки.",
 ] as const;
 
 export const ERRORS = {
