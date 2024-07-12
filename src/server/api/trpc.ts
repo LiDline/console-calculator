@@ -6,9 +6,10 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { initTRPC } from "@trpc/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
+import filteredTokens from "./trpc/filteredTokens";
 
 /**
  * 1. CONTEXT
@@ -76,3 +77,22 @@ export const createTRPCRouter = t.router;
  * are logged in.
  */
 export const publicProcedure = t.procedure;
+
+export const customProcedure = publicProcedure.use(
+  async ({ next, getRawInput }) => {
+    const input = (await getRawInput()) as string;
+
+    const text = filteredTokens(input);
+
+    if (text.error) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: text.error,
+      });
+    }
+
+    return next({
+      input: text.result,
+    });
+  },
+);
