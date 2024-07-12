@@ -2,6 +2,7 @@ import { Lexer } from "chevrotain";
 import createTokens from "./func/createTokens";
 import { CustomParser } from "./func/Parser";
 import type { CalculateResponse } from "~/server/validator/interfaces";
+import customVisitor from "./func/customVisitor";
 
 export default function mathCalculatorWithChevrotain(
   input: string,
@@ -20,7 +21,11 @@ export default function mathCalculatorWithChevrotain(
 
   const cst = parser.expression();
 
-  const BaseCstVisitor = parser.getBaseCstVisitorConstructor();
+  const visitor = customVisitor(parser, tokens);
+
+  // const res = visitor.visit(cst);
+
+  // console.log(res);
 
   return {
     result: "1",

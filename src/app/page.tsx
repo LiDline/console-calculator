@@ -19,7 +19,7 @@ export default function Home() {
           калькулятор
         </h1>
 
-        <div className="form-control">
+        {/* <div className="form-control">
           <label className="label cursor-pointer">
             <span className="label-text">Использовать Chevrotain? </span>
             <input
@@ -29,7 +29,7 @@ export default function Home() {
               onChange={handleCheckboxChange}
             />
           </label>
-        </div>
+        </div> */}
 
         <div className="flex flex-col items-center gap-2"></div>
       </div>

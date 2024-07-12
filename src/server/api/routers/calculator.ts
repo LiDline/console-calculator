@@ -8,14 +8,14 @@ import mathCalculator from "./calculator/mathCalculator";
 import mathCalculatorWithChevrotain from "./calculator/mathCalculatorWithChevrotain";
 
 export const calculatorRouter = createTRPCRouter({
-  calculate: customProcedure
-    .input(CalculateRequestSchema)
-    .output(CalculateResponseSchema)
-    .mutation(({ input }) => {
-      const res = mathCalculator(input);
+  // calculate: customProcedure
+  //   .input(CalculateRequestSchema)
+  //   .output(CalculateResponseSchema)
+  //   .mutation(({ input }) => {
+  //     const res = mathCalculator(input);
 
-      return res;
-    }),
+  //     return res;
+  //   }),
 
   mathCalculatorWithChevrotain: customProcedure
     .input(CalculateRequestSchema)
