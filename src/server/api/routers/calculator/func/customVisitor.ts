@@ -25,9 +25,9 @@ export default function customVisitor(
       for (let i = 0; i < ctx.rhs.length; i++) {
         const operator = ctx.AdditionOperator[i];
         const value = this.visit(ctx.rhs[i], state);
-        if (tokenMatcher(operator, tokens.Plus)) {
+        if (tokenMatcher(operator, tokens["+"])) {
           result += value;
-        } else if (tokenMatcher(operator, tokens.Minus)) {
+        } else if (tokenMatcher(operator, tokens["-"])) {
           result -= value;
         } else {
           throw new Error(
@@ -44,9 +44,9 @@ export default function customVisitor(
       for (let i = 0; i < ctx.rhs.length; i++) {
         const operator = ctx.MultiplicationOperator[i];
         const value = this.visit(ctx.rhs[i], state);
-        if (tokenMatcher(operator, tokens.Mul)) {
+        if (tokenMatcher(operator, tokens["*"])) {
           result *= value;
-        } else if (tokenMatcher(operator, tokens.Div)) {
+        } else if (tokenMatcher(operator, tokens["/"])) {
           result /= value;
         } else {
           throw new Error(

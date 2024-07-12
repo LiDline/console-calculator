@@ -23,11 +23,9 @@ export default function mathCalculatorWithChevrotain(
 
   const visitor = customVisitor(parser, tokens);
 
-  // const res = visitor.visit(cst);
-
-  // console.log(res);
+  const res = visitor.visit(cst);
 
   return {
-    result: "1",
+    result: `${res}`,
   };
 }

@@ -4,7 +4,7 @@ import {
 } from "src/server/validator/calculateSchema";
 import { createTRPCRouter, customProcedure } from "../../../server/api/trpc";
 
-import mathCalculator from "./calculator/mathCalculator";
+// import mathCalculator from "./calculator/mathCalculator";
 import mathCalculatorWithChevrotain from "./calculator/mathCalculatorWithChevrotain";
 
 export const calculatorRouter = createTRPCRouter({
