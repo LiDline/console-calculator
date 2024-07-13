@@ -91,8 +91,6 @@ export const customProcedure = publicProcedure.use(
       });
     }
 
-    return next({
-      input: text.result,
-    });
+    return next();
   },
 );
