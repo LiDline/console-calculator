@@ -16,7 +16,7 @@ Test task for Byndyusoft. Вакансия: JavaScript-разработчик / 
 
 ```bash
 npm install -g pnpm
-pnpm I —frozen-lockfile
+pnpm i —frozen-lockfile
 pnpm dev
 ```
 
