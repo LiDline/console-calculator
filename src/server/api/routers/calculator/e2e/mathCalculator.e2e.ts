@@ -10,6 +10,6 @@ describe("activityDefinition.create", () => {
   test("e2e. 1 Верный возврат", async () => {
     const input = "1 + 1";
 
-    const res = app.calculator.calculate(input);
+    const res = app.calculator.mathCalculatorWithChevrotain(input);
   });
 });

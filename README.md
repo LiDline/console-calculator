@@ -2,6 +2,14 @@
 
 Test task for Byndyusoft. Вакансия: JavaScript-разработчик / backend на Node.js (IT компания)
 
+## Описание
+
+Проект реализован с использованием архитектуры T3 - monorepo. Фронтенд выполнен на Next.js, а бэкенд на tRPC. Лексер, парсер и визитор были реализованы с помощью библиотеки [Chevrotain](https://chevrotain.io/docs/). В качестве примеров были использованы следующие ресурсы:
+
+- [Playground](https://chevrotain.io/playground/) Chevrotain;
+- [Статья](https://leanylabs.com/blog/js-formula-engine/), описывающая работу библиотеки Chevrotain;
+- [Репозиторий](https://github.com/codebox/top-down-parser) с реализацией top-down parser.
+
 ## Запуск
 
 ### dev
@@ -24,14 +32,6 @@ pnpm dev
 pnpm e2e
 pnpm unit
 ```
-
-## Описание
-
-Проект построен на T3 - monorepo. Front - Next.js, Backend - tRPC. Реализация lexer, parser и visitor выполнена через библиотеку [Chevrotain](https://chevrotain.io/docs/). Для примера использованы следующие ресурсы:
-
-- [Playground](https://chevrotain.io/playground/) Chevrotain;
-- [Статья](https://leanylabs.com/blog/js-formula-engine/), описывающая работу библиотеки Chevrotain;
-- [Репозиторий](https://github.com/codebox/top-down-parser) с реализацией top-down parser.
 
 ## Дерево проекта
 
