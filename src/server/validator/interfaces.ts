@@ -6,6 +6,11 @@ import type {
 import type { TokenName } from "../api/CONST";
 import type { CstNode, IToken, TokenType } from "chevrotain";
 
+export type FilteredTokens = {
+  error?: string;
+  result?: string;
+};
+
 export type CalculateRequest = z.infer<typeof CalculateRequestSchema>;
 
 export type CalculateResponse = z.infer<typeof CalculateResponseSchema>;

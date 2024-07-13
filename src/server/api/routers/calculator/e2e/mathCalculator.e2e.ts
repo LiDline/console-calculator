@@ -11,5 +11,7 @@ describe("activityDefinition.create", () => {
     const input = "1 + 1";
 
     const res = app.calculator.mathCalculatorWithChevrotain(input);
+
+    expect(res).toBe(2);
   });
 });

@@ -25,6 +25,6 @@ export default function mathCalculatorWithChevrotain(
   const res = visitor.visit(cst) as number | undefined;
 
   return {
-    result: `${res}`,
+    result: res,
   };
 }
