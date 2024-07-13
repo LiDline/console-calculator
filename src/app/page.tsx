@@ -5,11 +5,11 @@ import React from "react";
 import { CalculatorField } from "./_components/CalculatorField";
 
 export default function Home() {
-  const [isChecked, setIsChecked] = React.useState(true);
+  // const [isChecked, setIsChecked] = React.useState(true);
 
-  const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsChecked(event.target.checked);
-  };
+  // const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setIsChecked(event.target.checked);
+  // };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
@@ -33,7 +33,7 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-2"></div>
       </div>
-      <CalculatorField chevrotain={isChecked} />
+      <CalculatorField />
     </main>
   );
 }

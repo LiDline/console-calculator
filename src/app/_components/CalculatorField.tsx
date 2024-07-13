@@ -2,11 +2,7 @@ import { useState } from "react";
 
 import { api } from "~/trpc/react";
 
-interface CalculatorFieldProps {
-  chevrotain: boolean;
-}
-
-export function CalculatorField({ chevrotain }: CalculatorFieldProps) {
+export function CalculatorField() {
   // const utils = api.useUtils();
 
   const [mathString, setMathString] = useState("");

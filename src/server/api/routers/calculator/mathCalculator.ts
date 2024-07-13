@@ -25,7 +25,7 @@ export default function mathCalculator(input: string): CalculateResponse {
   };
 
   type Tree = {
-    [key in SymbolType]?: any[];
+    [key in SymbolType]?: unknown[];
   };
 
   function consume(
@@ -74,7 +74,7 @@ export default function mathCalculator(input: string): CalculateResponse {
     }
   }
 
-  const res = consume(input, "additionExpr");
+  consume(input, "additionExpr");
 
   // console.log(JSON.stringify(res));
 

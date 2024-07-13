@@ -22,7 +22,7 @@ export default function mathCalculatorWithChevrotain(
 
   const visitor = customVisitor(parser, tokens);
 
-  const res = visitor.visit(cst);
+  const res = visitor.visit(cst) as number | undefined;
 
   return {
     result: `${res}`,
