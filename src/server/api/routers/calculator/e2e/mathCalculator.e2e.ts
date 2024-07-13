@@ -7,7 +7,7 @@ describe("calculator", () => {
     app = e2eCallerInit();
   });
 
-  test("e2e. 1т", async () => {
+  test("e2e. 1", async () => {
     const input = "1 + 1";
 
     const res = await app.calculator.mathCalculatorWithChevrotain(input);

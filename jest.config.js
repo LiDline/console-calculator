@@ -8,12 +8,9 @@ const config = {
   collectCoverageFrom: ["**/*.(t|j)s"],
   coverageDirectory: "../coverage",
   testEnvironment: "node",
-  moduleNameMapper: {
-    "^src/(.*)$": "<rootDir>/src/$1",
-  },
   testTimeout: 600000,
   extensionsToTreatAsEsm: [".ts", ".tsx"],
-  transformIgnorePatterns: ["/node_modules/(?!superjson)(.*)"],
+  modulePaths: ["<rootDir>"],
 };
 
 export default config;

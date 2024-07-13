@@ -30,7 +30,6 @@ pnpm dev
 
 ```bash
 pnpm e2e
-pnpm unit
 ```
 
 ## Дерево проекта

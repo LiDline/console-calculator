@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "keywords": [
     "lexer",
-    "parser"
+    "parser",
+    "visitor"
   ],
   "license": "MIT",
   "private": true,

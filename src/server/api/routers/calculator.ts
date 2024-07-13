@@ -21,8 +21,6 @@ export const calculatorRouter = createTRPCRouter({
     .input(CalculateRequestSchema)
     .output(CalculateResponseSchema)
     .mutation(({ input }) => {
-      console.log(input);
-
       const res = mathCalculatorWithChevrotain(input);
 
       return res;
