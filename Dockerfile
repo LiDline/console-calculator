@@ -1,7 +1,7 @@
 FROM node:20-alpine AS builder
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm install -g pnpm
+RUN npm install -g pnpm@9.3.0
 WORKDIR /app
 COPY . .
 
@@ -15,12 +15,13 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 WORKDIR /app
 
-COPY --from=builder /app/next.config.js ./
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./standalone
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./standalone/.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./standalone/public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./standalone/public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./standalone/.next/public
 
-COPY --from=builder /app/.next/static ./.next/static
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+CMD ["node", "/app/standalone/server.js"]
