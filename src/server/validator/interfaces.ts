@@ -4,7 +4,7 @@ import type {
   CalculateResponseSchema,
 } from "./calculateSchema";
 import type { TokenName } from "../api/CONST";
-import type { TokenType } from "chevrotain";
+import type { CstNode, IToken, TokenType } from "chevrotain";
 
 export type CalculateRequest = z.infer<typeof CalculateRequestSchema>;
 
@@ -19,3 +19,28 @@ export type Operators =
   | TokenName.RParen;
 
 export type TokenTypeDict = { [key in TokenName]: TokenType };
+
+export interface ExpressionNode extends CstNode {
+  additionExpression: AdditionExpressionNode[];
+}
+
+export interface AdditionExpressionNode extends CstNode {
+  lhs: MultiplicationExpressionNode[];
+  rhs: MultiplicationExpressionNode[];
+  AdditionOperator: IToken[];
+}
+
+export interface MultiplicationExpressionNode extends CstNode {
+  lhs: AtomicExpressionNode[];
+  rhs: AtomicExpressionNode[];
+  MultiplicationOperator: IToken[];
+}
+
+export interface AtomicExpressionNode extends CstNode {
+  parenthesisExpression?: ParenthesisExpressionNode[];
+  NumberLiteral?: IToken[];
+}
+
+export interface ParenthesisExpressionNode extends CstNode {
+  expression: ExpressionNode[];
+}

@@ -1,7 +1,14 @@
 import { tokenMatcher } from "chevrotain";
 
 import type { CustomParser } from "./Parser";
-import type { TokenTypeDict } from "~/server/validator/interfaces";
+import type {
+  AdditionExpressionNode,
+  AtomicExpressionNode,
+  ExpressionNode,
+  MultiplicationExpressionNode,
+  ParenthesisExpressionNode,
+  TokenTypeDict,
+} from "~/server/validator/interfaces";
 
 export default function customVisitor(
   parser: CustomParser,
@@ -15,16 +22,22 @@ export default function customVisitor(
       this.validateVisitor();
     }
 
-    expression(ctx, state): any {
+    expression(ctx: ExpressionNode, state): any {
+      console.log(state);
+
       return this.visit(ctx.additionExpression, state);
     }
 
-    additionExpression(ctx, state): any {
+    additionExpression(ctx: AdditionExpressionNode, state): any {
       let result = this.visit(ctx.lhs, state);
+
       if (!ctx.rhs) return result;
+
       for (let i = 0; i < ctx.rhs.length; i++) {
-        const operator = ctx.AdditionOperator[i];
+        const operator = ctx.AdditionOperator[i]!;
+
         const value = this.visit(ctx.rhs[i], state);
+
         if (tokenMatcher(operator, tokens["+"])) {
           result += value;
         } else if (tokenMatcher(operator, tokens["-"])) {
@@ -38,11 +51,14 @@ export default function customVisitor(
       return result;
     }
 
-    multiplicationExpression(ctx, state): any {
+    multiplicationExpression(ctx: MultiplicationExpressionNode, state): any {
       let result = this.visit(ctx.lhs, state);
+
       if (!ctx.rhs) return result;
+
       for (let i = 0; i < ctx.rhs.length; i++) {
-        const operator = ctx.MultiplicationOperator[i];
+        const operator = ctx.MultiplicationOperator[i]!;
+
         const value = this.visit(ctx.rhs[i], state);
         if (tokenMatcher(operator, tokens["*"])) {
           result *= value;
@@ -56,16 +72,16 @@ export default function customVisitor(
       }
       return result;
     }
-    atomicExpression(ctx, state): any {
+    atomicExpression(ctx: AtomicExpressionNode, state): any {
       if (ctx.parenthesisExpression) {
         return this.visit(ctx.parenthesisExpression, state);
       }
-      if (ctx.NumberLiteral) {
-        return Number.parseFloat(ctx.NumberLiteral[0].image);
+      if (ctx.NumberLiteral?.length) {
+        return Number.parseFloat(ctx.NumberLiteral?.[0]?.image ?? "");
       }
     }
 
-    parenthesisExpression(ctx, state): any {
+    parenthesisExpression(ctx: ParenthesisExpressionNode, state): any {
       return this.visit(ctx.expression, state);
     }
   }

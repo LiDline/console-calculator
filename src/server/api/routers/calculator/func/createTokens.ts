@@ -1,6 +1,6 @@
 import { createToken, Lexer } from "chevrotain";
 import { TokenName } from "~/server/api/CONST";
-import { TokenTypeDict } from "~/server/validator/interfaces";
+import type { TokenTypeDict } from "~/server/validator/interfaces";
 
 export default function createTokens() {
   const AdditionOperator = createToken({
@@ -66,6 +66,7 @@ export default function createTokens() {
     MultiplicationOperator,
   ];
 
+  // For type in parser
   const tokens: TokenTypeDict = tokensByPriority.reduce((acc, tokenType) => {
     acc[tokenType.name as TokenName] = tokenType;
 

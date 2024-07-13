@@ -16,7 +16,6 @@ export default function mathCalculatorWithChevrotain(
   const lexingResult = CalculatorLexer.tokenize(input);
 
   const parser = new CustomParser(tokens);
-  parser.reset();
   parser.input = lexingResult.tokens;
 
   const cst = parser.expression();
