@@ -23,7 +23,8 @@ pnpm dev
 ### prod
 
 ```bash
-docker build --pull --rm -f "Dockerfile" -t consolecalculator:latest "."
+docker build --pull --rm -f "Dockerfile" -t consolecalculator:latest "."\
+docker run --rm -it -p 3000:3000/tcp consolecalculator:latest
 ```
 
 #### http://localhost:3000/
