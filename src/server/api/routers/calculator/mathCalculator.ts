@@ -78,5 +78,5 @@ export default function mathCalculator(input: string): CalculateResponse {
 
   // console.log(JSON.stringify(res));
 
-  return { result: "1" };
+  return { result: 1 };
 }
