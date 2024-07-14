@@ -12,18 +12,18 @@ Test task for Byndyusoft. Вакансия: JavaScript-разработчик / 
 
 ## Запуск
 
+### prod
+
+```bash
+docker compose up --build
+```
+
 ### dev
 
 ```bash
 npm install -g pnpm
 pnpm i —frozen-lockfile
 pnpm dev
-```
-
-### prod
-
-```bash
-docker compose up --build
 ```
 
 #### http://localhost:3000/
