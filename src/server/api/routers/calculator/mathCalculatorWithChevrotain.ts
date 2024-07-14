@@ -1,6 +1,6 @@
 import { Lexer } from "chevrotain";
 import createTokens from "./func/createTokens";
-import { CustomParser } from "./func/Parser";
+import { CustomParser } from "./func/customParser";
 import type { CalculateResponse } from "~/server/validator/interfaces";
 import customVisitor from "./func/customVisitor";
 

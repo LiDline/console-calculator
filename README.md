@@ -28,7 +28,7 @@ docker compose up --build
 
 #### http://localhost:3000/
 
-### tests
+## tests
 
 ```bash
 pnpm e2e
@@ -49,3 +49,15 @@ pnpm e2e
 └─ jest.config.js
     └─ Настройки тестовой среды
 ```
+
+## Расширение грамматики
+
+Чтобы расширить грамматику допустимых символов, нужно сделать следующее:
+
+- Добавить новые токены: ./src/server/api/CONST.ts
+
+- Обновить лексер: ./src/server/api/routers/calculator/func/createTokens.ts
+
+- Обновить парсер: ./src/server/api/routers/calculator/func/customParser.ts
+
+- Обновить визитор: ./src/server/api/routers/calculator/func/customVisitor.ts

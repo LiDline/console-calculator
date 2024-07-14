@@ -1,6 +1,6 @@
 import { tokenMatcher } from "chevrotain";
 
-import type { CustomParser } from "./Parser";
+import type { CustomParser } from "./customParser";
 import type {
   AdditionExpressionNode,
   AtomicExpressionNode,

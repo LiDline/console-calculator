@@ -11,6 +11,9 @@ const config = {
   testTimeout: 600000,
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   modulePaths: ["<rootDir>"],
+  moduleNameMapper: {
+    "^~/(.*)$": "<rootDir>/src/$1",
+  },
 };
 
 export default config;
