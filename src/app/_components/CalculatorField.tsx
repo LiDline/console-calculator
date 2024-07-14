@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ALLOWED_OPERATORS } from "~/server/api/CONST";
 
 import { api } from "~/trpc/react";
 
@@ -29,8 +30,6 @@ export function CalculatorField() {
 
   return (
     <div className="w-full max-w-xs">
-      <>{result}</>
-
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -38,13 +37,21 @@ export function CalculatorField() {
         }}
         className="flex flex-col gap-2"
       >
-        <input
-          type="text"
-          placeholder="Введите выражение..."
-          value={mathString}
-          onChange={(e) => setMathString(e.target.value)}
-          className="w-full rounded-full px-4 py-2 text-black"
-        />
+        <div
+          className="tooltip"
+          data-tip={`Допустимые символы: "${ALLOWED_OPERATORS.join(" ")}" и любые числа. Строки, не входящие в допустимые, будут игнорироваться.`}
+        >
+          <>{result}</>
+
+          <input
+            type="text"
+            placeholder="Введите выражение..."
+            value={mathString}
+            onChange={(e) => setMathString(e.target.value)}
+            className="w-full rounded-full px-4 py-2 text-black"
+          />
+        </div>
+
         <button
           type="submit"
           className="rounded-full bg-white/10 px-10 py-3 font-semibold transition hover:bg-white/20"
